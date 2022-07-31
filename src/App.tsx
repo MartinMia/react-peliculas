@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [fecha,setFecha] = useState(new Date());
+
+  useEffect(() =>{
+    const timerId = setInterval(() => {
+      setFecha(new Date()); 
+    }, 1000);
+
+    return () => clearInterval(timerId);
+
+  })
+
   return (
     <div>
       <h3>Ejemplo HTML</h3>
       <input/>
-      <div> ${new Date()} </div>      
+      <div> {fecha.toString()} </div>      
     </div>
   );
 }
