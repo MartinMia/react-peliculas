@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
 
-  let texto ="";
+  const [texto, setTexto]= useState('Valor por defecto')
+  const [checked, setChecked]= useState(false)
 
   const imagenURL ="https://www.pngfind.com/pngs/m/685-6854994_react-logo-no-background-hd-png-download.png";
 
@@ -11,7 +12,7 @@ function App() {
   
   const manejarKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) =>{
      console.log(e.currentTarget.value);
-     texto = e.currentTarget.value;
+     setTexto(e.currentTarget.value);
   }
 
   return (
@@ -33,7 +34,9 @@ function App() {
 
       <img src={imagenURL} alt="logo react"/>
       <div>
-        <input type="checkbox" /> Este es un checkbox
+        <input type="checkbox"  
+        onChange={(e) => setChecked(e.currentTarget.checked)}
+        checked={checked}/> Este es un checkbox
       </div>
     </>
   );
