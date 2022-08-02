@@ -35,7 +35,7 @@ function App() {
       <h1 className="rojo">Hola Mundo!</h1>
 
       <ProyectarContenido2
-        parteSup={<h3>Arriba</h3>}
+        parteSup={<span>Mensaje del componente padre</span>}
         parteInter={parteInter}
         parteInf={parteInf}
       />
