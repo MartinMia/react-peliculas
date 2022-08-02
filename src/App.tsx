@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
+import EjemploReloj from './EjemploReloj';
 import MostrarTexto from './MostrarTexto';
+import ProyectarContenido from './ProyectarContenido';
+import ProyectarContenido2 from './ProyectarContenido2';
 
 function App() {
 
@@ -16,9 +19,27 @@ function App() {
      setTexto(e.currentTarget.value);
   }
 
+  const parteInter = <EjemploReloj/>
+
+  const estilo ={
+    backgroundColor:'red',
+    width:'50px',
+    height:'50px',
+    marginLeft:'1rem'
+  }
+
+  const parteInf=<div style={estilo}></div>
+
   return (
     <>
       <h1 className="rojo">Hola Mundo!</h1>
+
+      <ProyectarContenido2
+        parteSup={<h3>Arriba</h3>}
+        parteInter={parteInter}
+        parteInf={parteInf}
+      />
+         
 
       <button 
         onMouseEnter={() => console.log('entrando')}  
@@ -31,7 +52,6 @@ function App() {
 
       <MostrarTexto texto={texto}/>     
 
-      <img src={imagenURL} alt="logo react"/>
       <div>
         <input type="checkbox"  
         onChange={(e) => setChecked(e.currentTarget.checked)}
