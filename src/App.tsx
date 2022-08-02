@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import MostrarTexto from './MostrarTexto';
 
 function App() {
 
@@ -27,10 +28,8 @@ function App() {
       <input type="text" name="" id=""
         onKeyUp={(e) => manejarKeyUp(e)}
       />
-      
-      <div>
-        {texto}
-      </div>
+
+      <MostrarTexto texto={texto}/>     
 
       <img src={imagenURL} alt="logo react"/>
       <div>
