@@ -1,38 +1,41 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import AppCSS from './App.module.css'
 
 function App() {
-  
-const cuadradoAzul ={
-  backgroundColor:'blue',
-   width:'50px',
-   height:'50px',
-  marginLeft:'1rem'
-}
 
-  const subtitulo = "Subtitulo"
-
-  const duplicar = (valor:number) => valor*2;
+  let texto ="";
 
   const imagenURL ="https://www.pngfind.com/pngs/m/685-6854994_react-logo-no-background-hd-png-download.png";
 
+  const manejarClick = () => console.log('click');
+  
+  const manejarKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) =>{
+     console.log(e.currentTarget.value);
+     texto = e.currentTarget.value;
+  }
+
   return (
-    <div>
+    <>
       <h1 className="rojo">Hola Mundo!</h1>
 
-      <div className="cuadradoRojo"></div>  
-      <div style={{backgroundColor:'green', width:'50px',height:'50px',marginLeft:'1rem'}}></div>  
-      <div style={cuadradoAzul}></div>  
+      <button 
+        onMouseEnter={() => console.log('entrando')}  
+        onClick={()=> console.log('click desde el boton')}>Clickeame
+      </button>
+      
+      <input type="text" name="" id=""
+        onKeyUp={(e) => manejarKeyUp(e)}
+      />
+      
+      <div>
+        {texto}
+      </div>
 
-      <h3 style={{color:'blue'}}>{subtitulo.toUpperCase()}</h3>
-      <h4 className='color'>Index.css:El doble de 3 es {duplicar(3)}</h4>
-      <h4 className={AppCSS.color}>App.module.css</h4>
       <img src={imagenURL} alt="logo react"/>
       <div>
         <input type="checkbox" /> Este es un checkbox
       </div>
-    </div>
+    </>
   );
 }
 
