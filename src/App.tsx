@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import ContenidoDinamico from './ContenidoDinamico';
 import EjemploReloj from './EjemploReloj';
 import MostrarTexto from './MostrarTexto';
 import ProyectarContenido from './ProyectarContenido';
@@ -33,6 +34,8 @@ function App() {
   return (
     <>
       <h1 className="rojo">Hola Mundo!</h1>
+
+      <ContenidoDinamico calificacion={95} />
 
       <ProyectarContenido2
         parteSup={<span>Mensaje del componente padre</span>}
