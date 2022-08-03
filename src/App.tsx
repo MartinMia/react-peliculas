@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import ContenidoDinamico from './ContenidoDinamico';
-import EjemploReloj from './EjemploReloj';
+import FormularioTexto from './FormularioTexto';
 import MostrarTexto from './MostrarTexto';
-import ProyectarContenido from './ProyectarContenido';
 import ProyectarContenido2 from './ProyectarContenido2';
 
 function App() {
@@ -11,16 +10,16 @@ function App() {
   const [texto, setTexto]= useState('Valor por defecto')
   const [checked, setChecked]= useState(false)
 
-  const imagenURL ="https://www.pngfind.com/pngs/m/685-6854994_react-logo-no-background-hd-png-download.png";
+  //const imagenURL ="https://www.pngfind.com/pngs/m/685-6854994_react-logo-no-background-hd-png-download.png";
 
-  const manejarClick = () => console.log('click');
+  //const manejarClick = () => console.log('click');
   
-  const manejarKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) =>{
-     console.log(e.currentTarget.value);
-     setTexto(e.currentTarget.value);
+  const manejarKeyUp = (textoInput: string) =>{
+     console.log(textoInput);
+     setTexto(textoInput);
   }
 
-  const parteInter = <EjemploReloj/>
+  //const parteInter = <EjemploReloj/>
 
   const estilo ={
     backgroundColor:'red',
@@ -43,11 +42,11 @@ function App() {
 
       {calificaciones.map(cal => <ContenidoDinamico key ={cal.nom} {...cal}/>)}
 
-      <ProyectarContenido2
+      {/* <ProyectarContenido2
         parteSup={<span>Mensaje del componente padre</span>}
         parteInter={parteInter}
         parteInf={parteInf}
-      />
+      /> */}
          
 
       <button 
@@ -55,9 +54,7 @@ function App() {
         onClick={()=> console.log('click desde el boton')}>Clickeame
       </button>
       
-      <input type="text" name="" id=""
-        onKeyUp={(e) => manejarKeyUp(e)}
-      />
+      <FormularioTexto manejarKeyUp={(e: string) => manejarKeyUp(e)}/>
 
       <MostrarTexto texto={texto}/>     
 
