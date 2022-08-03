@@ -12,7 +12,7 @@ export default function ContenidoDinamico(props: any){
         return(
             <div>
                 <h3>
-                    Excelente Calificacion
+                    {props.nom}: Excelente Calificacion
                 </h3>
             </div>
         )
@@ -20,14 +20,14 @@ export default function ContenidoDinamico(props: any){
         return(
             <div>
                 <h3>
-                    Muy bien
+                {props.nom}: Muy bien
                 </h3>
             </div>
         )
     }else{
         return(
             <div>
-                lol...
+                {props.nom}: lol...
             </div>
         )
     }

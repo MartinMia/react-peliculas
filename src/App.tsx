@@ -31,11 +31,17 @@ function App() {
 
   const parteInf=<div style={estilo}></div>
 
+  const calificaciones=[
+    {nom:'Martin',calificacion:85},
+    {nom:'Julita',calificacion:95},
+    {nom:'Ricardo',calificacion:85}
+  ]
+
   return (
     <>
       <h1 className="rojo">Hola Mundo!</h1>
 
-      <ContenidoDinamico calificacion={95} />
+      {calificaciones.map(cal => <ContenidoDinamico key ={cal.nom} {...cal}/>)}
 
       <ProyectarContenido2
         parteSup={<span>Mensaje del componente padre</span>}
