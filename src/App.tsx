@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
-import ContenidoDinamico from './ContenidoDinamico';
 import FormularioTexto from './FormularioTexto';
 import MostrarTexto from './MostrarTexto';
-import ProyectarContenido2 from './ProyectarContenido2';
-
+import EjemploUseEffect from './EjemploUseEffect';
 function App() {
 
   const [texto, setTexto]= useState('Valor por defecto')
-  const [checked, setChecked]= useState(false)
+  const [checked, setChecked]= useState(true)
 
   //const imagenURL ="https://www.pngfind.com/pngs/m/685-6854994_react-logo-no-background-hd-png-download.png";
 
@@ -21,33 +19,36 @@ function App() {
 
   //const parteInter = <EjemploReloj/>
 
-  const estilo ={
+  /* const estilo ={
     backgroundColor:'red',
     width:'50px',
     height:'50px',
     marginLeft:'1rem'
-  }
+  } */
 
-  const parteInf=<div style={estilo}></div>
+  /* const parteInf=<div style={estilo}></div>
 
   const calificaciones=[
     {nom:'Martin',calificacion:85},
     {nom:'Julita',calificacion:95},
     {nom:'Ricardo',calificacion:85}
-  ]
+  ] */
 
   return (
     <>
       <h1 className="rojo">Hola Mundo!</h1>
 
-      {calificaciones.map(cal => <ContenidoDinamico key ={cal.nom} {...cal}/>)}
+      <div>
+        <input type="checkbox"  
+        onChange={(e) => setChecked(e.currentTarget.checked)}
+        checked={checked}/> Mostrar componente useEffect
+      </div>
 
-      {/* <ProyectarContenido2
-        parteSup={<span>Mensaje del componente padre</span>}
-        parteInter={parteInter}
-        parteInf={parteInf}
-      /> */}
-         
+      {checked ? <EjemploUseEffect /> : null} 
+
+      {/*calificaciones.map(cal => <ContenidoDinamico key ={cal.nom} {...cal}/>)*/}
+
+               
 
       <button 
         onMouseEnter={() => console.log('entrando')}  
