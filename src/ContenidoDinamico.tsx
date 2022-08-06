@@ -24,11 +24,15 @@ export default function ContenidoDinamico(props: any){
                 </h3>
             </div>
         )
-    }else{
+    }else if(props.calificacion >= 0 && props.calificacion < 80){
         return(
             <div>
+                <h3>
                 {props.nom}: lol...
+                </h3>
             </div>
         )
+    }else{
+        throw `Ha habido un error con la calificacion de ${props.nom}`;
     }
 }

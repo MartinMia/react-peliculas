@@ -5,6 +5,8 @@ import MostrarTexto from './MostrarTexto';
 import EjemploUseEffect from './EjemploUseEffect';
 import ValorContext from './ValorContext';
 import Abuelo from './Abuelo';
+import ContenidoDinamico from './ContenidoDinamico';
+import ErrorBoundary from './ErrorBoundary';
 
 function App() {
 
@@ -30,32 +32,35 @@ function App() {
   } */
 
   /* const parteInf=<div style={estilo}></div>
-
+  */
   const calificaciones=[
-    {nom:'Martin',calificacion:85},
-    {nom:'Julita',calificacion:95},
-    {nom:'Ricardo',calificacion:85}
-  ] */
+    {nom:'Martin',calificacion:75},
+    {nom:'Julita',calificacion:85},
+    {nom:'Ricardo',calificacion:-1}
+  ]
 
   return (
     <>
       <h1 className="rojo">Hola Mundo!</h1>
 
-      <ValorContext.Provider value={texto}>
-        <Abuelo />
-      </ValorContext.Provider>
+      {calificaciones.map(cal =>
+       <ErrorBoundary key={cal.nom}>
+         <ContenidoDinamico  {...cal} />
+      </ErrorBoundary>
+      )}
 
-      <div>
+      {/* <ValorContext.Provider value={texto}>
+        <Abuelo />
+      </ValorContext.Provider> */}
+
+      {/* <div>
         <input type="checkbox"  
         onChange={(e) => setChecked(e.currentTarget.checked)}
         checked={checked}/> Mostrar componente useEffect
       </div>
 
-      {checked ? <EjemploUseEffect /> : null} 
-
-      {/*calificaciones.map(cal => <ContenidoDinamico key ={cal.nom} {...cal}/>)*/}
-
-               
+      {checked ? <EjemploUseEffect /> : null}  */}
+              
 
       <button 
         onMouseEnter={() => console.log('entrando')}  
