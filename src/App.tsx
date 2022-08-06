@@ -3,6 +3,9 @@ import './App.css';
 import FormularioTexto from './FormularioTexto';
 import MostrarTexto from './MostrarTexto';
 import EjemploUseEffect from './EjemploUseEffect';
+import ValorContext from './ValorContext';
+import Abuelo from './Abuelo';
+
 function App() {
 
   const [texto, setTexto]= useState('Valor por defecto')
@@ -37,6 +40,10 @@ function App() {
   return (
     <>
       <h1 className="rojo">Hola Mundo!</h1>
+
+      <ValorContext.Provider value={texto}>
+        <Abuelo />
+      </ValorContext.Provider>
 
       <div>
         <input type="checkbox"  
