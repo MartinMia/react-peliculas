@@ -3,3 +3,8 @@ export interface pelicula{
     titulo: string;
     poster: string;
 }
+
+export interface landinPageDTO{
+    enCartelera?: pelicula[];
+    proximosEstrenos?: pelicula[];
+}
