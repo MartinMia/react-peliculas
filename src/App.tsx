@@ -3,7 +3,7 @@ import './App.css';
 import ListadoPeliculas from './peliculas/ListadoPeliculas';
 //import PeliculaIndividual from './peliculas/PeliculaIndividual';
 import { landinPageDTO} from './peliculas/peliculas.model';
-import Button from './utils/Button';
+import Menu from './utils/Menu';
 
 
 function App() {
@@ -50,11 +50,9 @@ function App() {
 
     <>
 
-        <div className='container'>
+        <Menu />
 
-          <Button>
-            Mi botón
-          </Button>
+        <div className='container'>
 
           <h3>En Cartelera</h3>
 
