@@ -13,8 +13,9 @@ export default function CrearGenero(){
             <Formik initialValues={{
                 nombre:''
             }}
-                onSubmit={values => {
-                    console.log(values)
+                onSubmit={async values => {
+                    await new Promise(r => setTimeout(r,3000));
+                    console.log(values);
                 }}
 
                 validationSchema={Yup.object({
@@ -22,14 +23,19 @@ export default function CrearGenero(){
                 })}
 
             >
-                <Form>
+
+                {(formikProps)=> (
+                    <Form>
 
                     <FormGroupText campo="nombre" label="Nombre" placeholder="Nombre Genero"/>
 
-                    <Button type="submit">Salvar</Button>
+                    <Button disabled={formikProps.isSubmitting} 
+                            type="submit">Salvar</Button>
 
                     <Link className="btn btn-secondary" to="/generos">Cancelar</Link>
                 </Form>
+                )}
+                
             </Formik>
 
         </>
