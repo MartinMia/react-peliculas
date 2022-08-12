@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-.rojo{
-  color: red;
+form > a{
+  margin-left: 1rem;
 }
