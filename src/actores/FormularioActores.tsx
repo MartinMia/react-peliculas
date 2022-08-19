@@ -4,6 +4,7 @@ import Button from "../utils/Button";
 import FormGroupText from "../utils/FormGroupText";
 import { actorCreacionDTO } from "./actores.model";
 import * as Yup from 'yup';
+import FormGroupFecha from "../utils/FormGroupFecha";
 
 export default function FormularioActores(props: formularioActoresProps){
     return(
@@ -12,7 +13,8 @@ export default function FormularioActores(props: formularioActoresProps){
             initialValues={props.modelo}
             onSubmit={props.onSubmit}
             validationSchema={Yup.object({
-                nombre: Yup.string().required('Este campo es requerido').primeraLetraMayuscula()
+                nombre: Yup.string().required('Este campo es requerido').primeraLetraMayuscula(),
+                fechaNacimiento: Yup.date().nullable().required('Este campo es requerido')
             })}
         >
 
@@ -20,6 +22,9 @@ export default function FormularioActores(props: formularioActoresProps){
                 <Form>
 
                     <FormGroupText campo="nombre" label="Nombre"/>
+                    <FormGroupFecha label="Fecha Nacimiento" campo="fechaNacimiento"/>
+
+                    <br></br>
 
                     <Button disabled={formikProps.isSubmitting}
                             type="submit"
