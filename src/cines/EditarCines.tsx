@@ -5,7 +5,7 @@ export default function EditarCines(){
         <>
             <h3>Editar Cine</h3>
             <FormularioCines
-                modelo={{nombre:'CinemaCenter'}}
+                modelo={{nombre:'CinemaCenter', latitud:-31.519353519110286, longitud:-68.54158964232829}}
                 onSubmit={valores => console.log(valores)}
             />
         </>
