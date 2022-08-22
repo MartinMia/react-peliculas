@@ -1,3 +1,4 @@
+import { actorPeliculaDTO } from "../actores/actores.model";
 import { cineDTO } from "../cines/cines.model";
 import { generoDTO } from "../generos/generos.model";
 import FormularioPeliculas from "./FormularioPeliculas";
@@ -28,10 +29,20 @@ export default function EditarPeliculas(){
         {id:3, nombre:'CRM Cinema'}
     ]
 
+    const actoresSeleccionados: actorPeliculaDTO[] = [
+        {
+            id:1, 
+            nombre:'Dwayne Johnsonn',
+            personaje:'', 
+            foto:'https://m.media-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_UX214_CR0,0,214,317_AL_.jpg'
+        }
+    ]
+
     return(
         <>
             <h3>Editar Pelicula</h3>
             <FormularioPeliculas 
+                actoresSeleccionados={actoresSeleccionados}
                 generosNoSeleccionados={generosNoSeleccionados}
                 generosSeleccionados={generosSeleccionados}
                 cinesNoSeleecionados={cinesNoSeleccionados}
