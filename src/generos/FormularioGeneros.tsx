@@ -14,8 +14,8 @@ export default function FormularioGeneros(props:formularioGenerosProps){
 
             validationSchema={Yup.object({
                 nombre: Yup.string().required('Este campo es requerido')
-                    .max(10,'La longitud máxima es de 10 caracteres')
-                    .primeraLetraMayuscula()
+                    .max(50,'La longitud máxima es de 50 caracteres')
+                        .primeraLetraMayuscula()
             })}
 
         >
@@ -23,13 +23,13 @@ export default function FormularioGeneros(props:formularioGenerosProps){
             {(formikProps)=> (
                 <Form>
 
-                <FormGroupText campo="nombre" label="Nombre" placeholder="Nombre Genero"/>
+                    <FormGroupText campo="nombre" label="Nombre"/>
 
-                <Button disabled={formikProps.isSubmitting} 
-                        type="submit">Salvar</Button>
+                    <Button disabled={formikProps.isSubmitting} 
+                            type="submit">Salvar</Button>
 
-                <Link className="btn btn-secondary" to="/generos">Cancelar</Link>
-            </Form>
+                    <Link className="btn btn-secondary" to="/generos">Cancelar</Link>
+                </Form>
             )}
             
         </Formik>

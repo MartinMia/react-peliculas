@@ -5,7 +5,7 @@ import MostrarErrorCampo from './MostrarErrorCampo';
 export default function FormGroupText(props: formGroupTextProps){
     return(
         <div className="form-group">
-            {props.label ? <label htmlFor={props.campo}>Nombre {props.label}</label> : null}
+            {props.label ? <label htmlFor={props.campo}>{props.label}</label> : null}
             <Field name={props.campo} 
             className="form-control" 
             placeholder={props.placeholder}/>
