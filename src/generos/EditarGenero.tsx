@@ -1,20 +1,46 @@
-import React from "react";
-//import { useParams } from "react-router-dom"
+import axios, { AxiosResponse } from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom"
+import Cargnado from "../utils/Cargando";
+import { urlGeneros } from "../utils/endpoint";
+import MostrarErrores from "../utils/MostrarErrores";
 import FormularioGeneros from "./FormularioGeneros";
+import { generoCreacionDTO, generoDTO } from "./generos.model";
 
 export default function EditarGenero(){
 
-    //const {id}: any = useParams(); 
+    const {id}: any = useParams(); 
+    const [genero, setGenero] = useState<generoDTO>();
+    const [errores, setErrores] = useState<string[]>([]);
+    const history = useHistory();
+
+    useEffect(() =>{
+        axios.get(`${urlGeneros}/${id}`)
+        .then((respuesta: AxiosResponse<generoDTO>) => {
+            setGenero(respuesta.data);
+        })
+    })
+
+    async function editar(generoEditar: generoCreacionDTO){
+        try{
+            await axios.put(`${urlGeneros}/${id}`,generoEditar);
+            history.push('/generos');
+        }
+        catch(error){
+            setErrores(error.response.data)
+        }
+    }
 
     return(
         <>
             <h3>Editar Género</h3>
-            <FormularioGeneros modelo={{nombre:'Accion'}}
+            <MostrarErrores errores={errores}/>
+            {genero ? <FormularioGeneros modelo={genero}
                 onSubmit={async valores => {
-                    await new Promise(r => setTimeout(r,3000))
-                    console.log(valores);
+                    await editar(valores)
                 }}
-            />
+            /> : <Cargnado /> } 
+            
         </>
     )
 }

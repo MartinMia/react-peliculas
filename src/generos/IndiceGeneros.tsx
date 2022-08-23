@@ -71,7 +71,7 @@ export default function IndiceGeneros(){
                         {generos?.map(genero => 
                         <tr key={genero.id}>
                                 <td>
-                                    <Link className="btn btn-success" to={`/generos/${genero.id}`}>
+                                    <Link className="btn btn-success" to={`/generos/editar/${genero.id}`}>
                                         Editar
                                     </Link>
 
