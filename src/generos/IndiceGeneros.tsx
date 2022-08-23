@@ -6,6 +6,7 @@ import { urlGeneros } from '../utils/endpoint';
 import ListadoGenerico from '../utils/ListadoGenerico';
 import Paginacion from '../utils/Paginacion';
 import { generoDTO } from './generos.model';
+import confirmar from '../utils/Confirmar';
 
 export default function IndiceGeneros(){
 
@@ -16,17 +17,34 @@ export default function IndiceGeneros(){
     
 
     useEffect(() => {
+        cargarDatos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pagina, recordsPorPagina])
+
+    function cargarDatos(){
         axios.get(urlGeneros, {
             params: {pagina, recordsPorPagina}
         })
             .then((respuesta: AxiosResponse<generoDTO[]>) =>{
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const totalDeRegistros =
                     parseInt(respuesta.headers['cantidadtotalregistros'], 10);
                 setTotalDePaginas(Math.ceil(totalDePaginas/recordsPorPagina))
                 console.log(respuesta.data);
                 setGeneros(respuesta.data);
             })
-    },[pagina, recordsPorPagina])
+    }
+
+    async function borrar(id: number){
+        try{
+            await axios.delete(`${urlGeneros}/${id}`)
+            cargarDatos();
+        }
+
+        catch(error){
+            console.log(error.response.data);
+        }
+    }
 
     return(
         <>
@@ -75,7 +93,9 @@ export default function IndiceGeneros(){
                                         Editar
                                     </Link>
 
-                                    <Button className="btn btn-danger"> Borrar</Button>
+                                    <Button 
+                                    onClick={() => confirmar(()=>borrar(genero.id))}
+                                    className="btn btn-danger"> Borrar</Button>
                                 </td>
 
                                 <td>
