@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
 
-export default function Paginacion(props: paginacionProps){
+export default function Paginacion(props: paginacionProps) {
     const [listadoLinks, setListadoLinks] = useState<modeloLink[]>([]);
     useEffect(() => {
         const paginaAnteriorHabilitada = props.paginaActual !== 1;
-        const paginaAnterior  = props.paginaActual - 1;
+        const paginaAnterior = props.paginaActual - 1;
         const links: modeloLink[] = [];
 
         links.push({
             texto: 'Anterior',
             habilitado: paginaAnteriorHabilitada,
             pagina: paginaAnterior,
-            activo:false
+            activo: false
         });
 
-        for(let i = 1; i <= props.cantidadTotalDePaginas; i++){
-            if(i >= props.paginaActual - props.radio && i <= props.paginaActual + props.radio){
-                links.push({texto: `${i}`, activo: props.paginaActual === i,
-                habilitado: true, pagina: i
+        for (let i = 1; i <= props.cantidadTotalDePaginas; i++) {
+            if (i >= props.paginaActual - props.radio && i <= props.paginaActual + props.radio) {
+                links.push({
+                    texto: `${i}`,
+                    activo: props.paginaActual === i,
+                    habilitado: true, pagina: i
                 })
             }
         }
@@ -29,10 +31,10 @@ export default function Paginacion(props: paginacionProps){
             pagina: paginaSiguiente,
             habilitado: paginaSiguienteHabilitada,
             activo: false
-            });
+        });
 
         setListadoLinks(links);
-    },[props.paginaActual, props.cantidadTotalDePaginas, props.radio])
+    }, [props.paginaActual, props.cantidadTotalDePaginas, props.radio])
 
     function obtenerClase(link: modeloLink){
         if (link.activo){
@@ -40,53 +42,52 @@ export default function Paginacion(props: paginacionProps){
         }
 
         if (!link.habilitado){
-            return "disabled"
+            return "disabled";
         }
 
-        return "pointer";
+        return "pointer"
     }
 
     function seleccionarPagina(link: modeloLink){
-        if(link.pagina === props.paginaActual){
+        if (link.pagina === props.paginaActual){
             return;
         }
 
-        if(!link.habilitado){
+        if (!link.habilitado){
             return;
         }
 
         props.onChange(link.pagina);
-    }    
+    }
 
-    return(
+    return (
         <nav>
             <ul className="pagination justify-content-center">
                 {listadoLinks.map(link => <li key={link.texto}
                  onClick={() => seleccionarPagina(link)}
-                 className={`page-item cursor ${obtenerClase(link)}`}>
-                     <span className="page-link">{link.texto}</span>
+                 className={`page-item cursor ${obtenerClase(link)}`}
+                >
+                    <span className="page-link">{link.texto}</span>
                 </li>)}
             </ul>
         </nav>
     )
-
-        
 }
 
-interface modeloLink{
+interface modeloLink {
     pagina: number;
     habilitado: boolean;
     texto: string;
     activo: boolean;
 }
 
-interface paginacionProps{
+interface paginacionProps {
     paginaActual: number;
     cantidadTotalDePaginas: number;
-    radio:number;
+    radio: number;
     onChange(pagina: number): void;
 }
 
-Paginacion.defaultProps ={
+Paginacion.defaultProps = {
     radio: 3
 }
