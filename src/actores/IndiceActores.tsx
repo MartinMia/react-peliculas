@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { urlActores } from "../utils/endpoint";
 import IndiceEntidad from "../utils/IndiceEntidad";
 import { actorDTO } from "./actores.model";
