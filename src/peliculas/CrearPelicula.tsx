@@ -50,10 +50,10 @@ export default function CrearPeliculas(){
             <MostrarErrores errores={errores}/>
             {cargado ? <FormularioPeliculas
                 actoresSeleccionados={[]}
-                generosNoSeleccionados={generosNoSeleccionados}
-                generosSeleccionados={[]}
                 cinesNoSeleecionados={cinesNoSeleccionados}
                 cinesSeleecionados={[]}
+                generosNoSeleccionados={generosNoSeleccionados}
+                generosSeleccionados={[]}
                 modelo={{titulo:'',enCines: false, trailer:''}}
                 onSubmit={async valores => await crear(valores)}
             />: <Cargnado/>}
