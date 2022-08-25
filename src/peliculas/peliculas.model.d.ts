@@ -27,7 +27,7 @@ export interface peliculaCreacionDTO{
 }
 
 export interface landinPageDTO{
-    enCartelera?: peliculaDTO[];
+    enCines?: peliculaDTO[];
     proximosEstrenos?: peliculaDTO[];
 }
 
