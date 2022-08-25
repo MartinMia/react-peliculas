@@ -1,5 +1,5 @@
 import { actorCreacionDTO } from "../actores/actores.model";
-import { peliculaDTO, peliculaCreacionDTO } from "../peliculas/peliculas.model";
+import { peliculaCreacionDTO } from "../peliculas/peliculas.model";
 
 export  function convertirActorAFormData(actor: actorCreacionDTO): FormData{
     const formData = new FormData();
@@ -43,7 +43,7 @@ export function convertirPeliculaAFormData(pelicula: peliculaCreacionDTO): FormD
 
     formData.append("generosIds",JSON.stringify(pelicula.generosIds));
     formData.append("cinesIds",JSON.stringify(pelicula.cinesIds));
-    formData.append("actoresIds",JSON.stringify(pelicula.actores));
+    formData.append("actores",JSON.stringify(pelicula.actores));
 
     return formData;
 }
