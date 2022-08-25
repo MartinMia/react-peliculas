@@ -1,5 +1,5 @@
 import { actorCreacionDTO } from "../actores/actores.model";
-import { pelicula, peliculaCreacionDTO } from "../peliculas/peliculas.model";
+import { peliculaDTO, peliculaCreacionDTO } from "../peliculas/peliculas.model";
 
 export  function convertirActorAFormData(actor: actorCreacionDTO): FormData{
     const formData = new FormData();
